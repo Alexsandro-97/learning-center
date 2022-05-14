@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myrobot_app/screens/course_screen.dart';
 import 'package:myrobot_app/screens/home_screen.dart';
 
 void main() => runApp(const MyApp());
@@ -14,7 +15,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomeScreen(),
+        '/course': (context) => const CourseScreen(),
+      },
     );
   }
 }

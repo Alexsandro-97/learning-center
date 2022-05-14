@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:myrobot_app/resources/cursos.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,15 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
             height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(bottom: 40),
+                const SizedBox(
                   height: 65,
-                  child: SvgPicture.asset(
-                    'assets/images/myrobot-logo.svg',
-                    semanticsLabel: 'My Robot Logo',
-                    fit: BoxFit.cover,
-                    height: 300,
-                    width: 300,
+                  child: Text(
+                    'LOGO',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 32,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -55,12 +53,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               _cursoSelected = 'One';
                               _aulaCursoSelected = Courses.cursosOne;
                             });
-                          } else if (Courses.cursos[index] == 'Tech') {
+                          } /* else if (Courses.cursos[index] == 'Tech') {
                             setState(() {
                               _cursoSelected = 'Tech';
                               _aulaCursoSelected = Courses.cursosTech;
                             });
-                          }
+                          } */
                         },
                         child: Container(
                           height: 45,
@@ -115,41 +113,44 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisCount: 4,
                 children: List.generate(
                   45,
-                  (index) => Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "$_cursoSelected - Aula ${index + 1}",
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Color(0xFFff7b00),
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Container(
-                          height: 90,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: const Color(0xFFff7b00),
-                          ),
-                          child: Center(
-                              child: Text(
-                            'Projeto: ${_aulaCursoSelected[index]}',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                            ),
+                  (index) => InkWell(
+                    onTap: () => Navigator.pushNamed(context, '/course'),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "$_cursoSelected - Aula ${index + 1}",
                             textAlign: TextAlign.center,
-                          )),
-                        ),
-                      ],
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white,
+                            style: const TextStyle(
+                              color: Color(0xFFff7b00),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Container(
+                            height: 90,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: const Color(0xFFff7b00),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Projeto: ${_aulaCursoSelected[index]}',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                              textAlign: TextAlign.center,
+                            )),
+                          ),
+                        ],
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
