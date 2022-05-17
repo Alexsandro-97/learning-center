@@ -42,10 +42,10 @@ class _CourseScreenState extends State<CourseScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 5),
               Expanded(
                 child: PageView.builder(
-                  itemCount: 4,
+                  itemCount: 40,
                   controller: _controller,
                   onPageChanged: (index) {
                     setState(() {
@@ -61,11 +61,15 @@ class _CourseScreenState extends State<CourseScreen> {
                       ),
                       borderRadius: BorderRadius.circular(35),
                       color: Colors.white,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/Basquete$index.jpeg'),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -93,43 +97,33 @@ class _CourseScreenState extends State<CourseScreen> {
                 ],
               ),
               const SizedBox(height: 30),
-              Container(
-                width: 400,
-                height: 55,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                  ),
-                  color: Color(0xFFff7b00),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(4, (index) {
-                    if (index == pageIndex) {
-                      return Container(
-                        margin: const EdgeInsets.only(right: 5),
-                        width: 20,
-                        height: 20,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.blue,
-                        ),
-                      );
-                    } else {
-                      return Container(
-                        margin: const EdgeInsets.only(right: 5),
-                        width: 20,
-                        height: 20,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                      );
-                    }
-                  }),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(40, (index) {
+                  if (index == pageIndex) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 5),
+                      width: 20,
+                      height: 20,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color(0xFFff7b00),
+                      ),
+                    );
+                  } else {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 5),
+                      width: 10,
+                      height: 10,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                    );
+                  }
+                }),
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

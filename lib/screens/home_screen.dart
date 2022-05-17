@@ -26,9 +26,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   height: 65,
                   child: Text(
-                    'LOGO',
+                    'My Robot School',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFFff7b00),
                       fontSize: 32,
                     ),
                   ),
